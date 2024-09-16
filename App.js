@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import BottomTabNavigator from '/Users/joshuaimogore/Documents/GitHub/MamoriEx/screens/BottomTabNavigator.js';
+import BottomTabNavigator from './screens/BottomTabNavigator';
 
 export default function App() {
   return (

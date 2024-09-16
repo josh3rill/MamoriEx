@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image, Button, StyleSheet } from 'react-native';
-import moment from 'moment';
-import Header from '../components/Header.js';
-import Timer from '../components/Timer.js';
-import Prizes from '../components/Prizes.js';
+import { View, Button, StyleSheet } from 'react-native';
+import moment, { Moment } from 'moment';
+import Header from '../components/Header';
+import Timer from '../components/Timer';
+import Prizes from '../components/Prizes';
 
-export default function HomeScreen() {
-  const [nextDrawTime, setNextDrawTime] = useState(null);
+const HomeScreen: React.FC = () => {
+  const [nextDrawTime, setNextDrawTime] = useState<Moment | null>(null);
 
   useEffect(() => {
     fetchNextDraw();
@@ -18,7 +18,7 @@ export default function HomeScreen() {
       const data = await response.json();
       setNextDrawTime(moment(data.date));
     } catch (error) {
-      console.log('Error fetching next draw:', error);
+      console.error('Error fetching next draw:', error);
     }
   };
 
@@ -30,7 +30,7 @@ export default function HomeScreen() {
       <Button title="Scan Products & Win" onPress={() => {}} />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -38,3 +38,5 @@ const styles = StyleSheet.create({
     padding: 20,
   },
 });
+
+export default HomeScreen;

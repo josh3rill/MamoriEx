@@ -1,13 +1,13 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-export default function ScanAndProfileScreen() {
+const ListsScreen: React.FC = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>This is the Scan & Profile Screen</Text>
+      <Text style={styles.text}>This is the Lists Screen</Text>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -21,3 +21,5 @@ const styles = StyleSheet.create({
     color: '#333',
   },
 });
+
+export default ListsScreen;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-export default function Prizes() {
+const Prizes: React.FC = () => {
   return (
     <View style={styles.prizes}>
       <View style={styles.prizeItem}>
@@ -18,7 +18,7 @@ export default function Prizes() {
       </View>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   prizes: {
@@ -38,3 +38,5 @@ const styles = StyleSheet.create({
     color: 'gray',
   },
 });
+
+export default Prizes;

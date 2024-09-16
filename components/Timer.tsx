@@ -1,9 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import moment from 'moment';
+import moment, { Moment } from 'moment';
 
-export default function Timer({ nextDrawTime }) {
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+interface TimerProps {
+  nextDrawTime: Moment;
+}
+
+interface TimeLeft {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+}
+
+const Timer: React.FC<TimerProps> = ({ nextDrawTime }) => {
+  const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft());
 
   useEffect(() => {
     const timerId = setInterval(() => {
@@ -13,7 +24,7 @@ export default function Timer({ nextDrawTime }) {
     return () => clearInterval(timerId);
   }, [nextDrawTime]);
 
-  function calculateTimeLeft() {
+  function calculateTimeLeft(): TimeLeft {
     const now = moment();
     const duration = moment.duration(nextDrawTime.diff(now));
     return {
@@ -26,10 +37,12 @@ export default function Timer({ nextDrawTime }) {
 
   return (
     <View style={styles.timer}>
-      <Text style={styles.timeText}>{timeLeft.days} Days {timeLeft.hours} Hours {timeLeft.minutes} Minutes {timeLeft.seconds} Seconds</Text>
+      <Text style={styles.timeText}>
+        {timeLeft.days} Days {timeLeft.hours} Hours {timeLeft.minutes} Minutes {timeLeft.seconds} Seconds
+      </Text>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   timer: {
@@ -41,3 +54,5 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 });
+
+export default Timer;

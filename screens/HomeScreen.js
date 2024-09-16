@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Image, Button, StyleSheet } from 'react-native';
 import moment from 'moment';
-import Header from '../../components/Header';
-import Timer from '../../components/Timer';
-import Prizes from '../../components/Prizes';
+import Header from '../components/Header.js';
+import Timer from '../components/Timer.js';
+import Prizes from '../components/Prizes.js';
 
 export default function HomeScreen() {
   const [nextDrawTime, setNextDrawTime] = useState(null);

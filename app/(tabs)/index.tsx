@@ -242,7 +242,7 @@ const stylesDetials = StyleSheet.create({
   },
 });
 
-// Define the main screen component
+//  the main screen component
 export default function TabOneScreen() {
   return (
     <View style={styles.mainContainer}>
@@ -259,7 +259,7 @@ export default function TabOneScreen() {
   );
 }
 
-// Define styles for the entire TabOneScreen
+//  styles for the entire TabOneScreen
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,

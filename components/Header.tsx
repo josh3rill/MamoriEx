@@ -1,10 +1,31 @@
-import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
+import { ThemedText } from '@/components/ThemedText';
+import { ThemedView } from '@/components/ThemedView';
+
+export default function ProfileAndBookmarkComponent() {
+  const profileImageUrl = 'https://cdn.pixabay.com/photo/2016/11/02/11/08/monk-1791113_640.jpg'; // Replace with your actual image URL
+
+  return (
+    <ThemedView style={styles.container}>
+      <Image source={{ uri: profileImageUrl, headers: { Accept: 'image/*' } }} style={styles.profileImage} />
+      <ThemedView style={styles.textContainer}>
+        <ThemedText type="subtitle">Hi John!</ThemedText>
+        <ThemedText>50+ Scans</ThemedText>
+      </ThemedView>
+      <ThemedView style={styles.bookmarkContainer}>
+        <Image source={require('@/assets/images/react-logo.png')} style={styles.bookmarkImage} />
+        <ThemedText type="defaultSemiBold">124</ThemedText>
+        <ThemedText>View Entries</ThemedText>
+      </ThemedView>
+    </ThemedView>
+  );
+}
 
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
+    gap: 8, // Adds space between elements
   },
   profileImage: {
     width: 50,
@@ -15,47 +36,13 @@ const styles = StyleSheet.create({
   textContainer: {
     flex: 1,
   },
-  username: {
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  scans: {
-    fontSize: 16,
-  },
   bookmarkContainer: {
-    flexDirection: 'column', // Arrange elements vertically
+    flexDirection: 'column',
     alignItems: 'center',
+    gap: 4, // Adds space between bookmark elements
   },
   bookmarkImage: {
     width: 20,
     height: 20,
   },
-  bookmarkCount: {
-    fontSize: 14,
-    color: 'gray',
-  },
-  bookmarkLabel: {
-    fontSize: 14,
-  },
 });
-
-const ProfileAndBookmarkComponent = () => {
-  const profileImageUrl = '../assets/images/react-logo.png'; // Replace with your actual image URL
-
-  return (
-    <View style={styles.container}>
-      <Image source={{ uri: profileImageUrl }} style={styles.profileImage} />
-      <View style={styles.textContainer}>
-        <Text style={styles.username}>Hi John!</Text>
-        <Text style={styles.scans}>50+ Scans</Text>
-      </View>
-      <View style={styles.bookmarkContainer}>
-        <Image source={require('../assets/images/react-logo.png')} style={styles.bookmarkImage} />
-        <Text style={styles.bookmarkCount}>124</Text>
-        <Text style={styles.bookmarkLabel}>View Entries</Text>
-      </View>
-    </View>
-  );
-};
-
-export default ProfileAndBookmarkComponent;
